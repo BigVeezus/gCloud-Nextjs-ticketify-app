@@ -4,7 +4,7 @@ import { requireAuth } from "../middlewares/require-auth";
 import { currentUser } from "../middlewares/is-user-loggedin";
 const router = express.Router();
 
-router.get("/api/users/currentuser", currentUser, requireAuth, (req, res) => {
+router.get("/api/users/currentuser", currentUser, (req, res) => {
   res.send({ currentUser: req.currentUser || null });
 });
 

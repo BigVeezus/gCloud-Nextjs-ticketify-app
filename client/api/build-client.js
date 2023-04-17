@@ -11,7 +11,7 @@ export default ({ req }) => {
   } else {
     // We are on thr browser
     return axios.create({
-      baseURL: "/",
+      baseUrl: "/",
     });
   }
 };

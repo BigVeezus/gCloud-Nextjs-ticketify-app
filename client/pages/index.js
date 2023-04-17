@@ -1,4 +1,3 @@
-import axios from "axios";
 import buildClient from "../api/build-client";
 
 const Home = ({ currentUser }) => {
@@ -6,17 +5,8 @@ const Home = ({ currentUser }) => {
   // axios.get("api/users/currentuser");
   return (
     <>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>Ticketify!</title>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-      />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      />
+
       {/* <link rel="stylesheet" href="../public/index.css" /> */}
       <div>
         <div className="main">
@@ -25,7 +15,7 @@ const Home = ({ currentUser }) => {
               <nav className="navbar">
                 <div className="container">
                   <div className="navbar-brand">
-                    <a className="navbar-item">
+                    <a className="navbar-item" href="/">
                       <img
                         src="https://bulma.io/images/bulma-type-white.png"
                         alt="Logo"
@@ -42,7 +32,9 @@ const Home = ({ currentUser }) => {
                   </div>
                   <div id="navbarMenuHeroB" className="navbar-menu">
                     <div className="navbar-end">
-                      <a className="navbar-item is-active">Home</a>
+                      <a className="navbar-item is-active" href="/">
+                        Home
+                      </a>
                       <a className="navbar-item">Tickets</a>
                       <a className="navbar-item">Contact Us</a>
                       <span className="navbar-item">
@@ -63,8 +55,22 @@ const Home = ({ currentUser }) => {
 
             <div className="hero-body bg-img is-fluid">
               <div className="container has-text-centered">
-                <p className="title bg-text">PURCHASE YOUR TICKETS NOW</p>
-                <p className="subtitle">Subtitle</p>
+                <p className="title bg-text">PURCHASE YOUR TICKETS NOW !</p>
+                {currentUser ? (
+                  <div>
+                    <p className="subtitle">You are signed in</p>
+                    <div className="control">
+                      <button className="button is-dark">View tickets</button>
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    <p className="subtitle">You are not logged in</p>
+                    <div className="control">
+                      <button className="button is-dark">Login</button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             <div className="hero-foot">
@@ -100,7 +106,9 @@ const Home = ({ currentUser }) => {
   );
 };
 Home.getInitialProps = async (context) => {
-  const { data } = await buildClient(context).get("/api/users/currentuser");
+  const client = buildClient(context);
+  const { data } = await client.get("/api/users/currentuser");
+
   return data;
 };
 
