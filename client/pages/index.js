@@ -1,24 +1,23 @@
 import axios from "axios";
+import buildClient from "../api/build-client";
 
 const Home = ({ currentUser }) => {
   console.log(currentUser);
   // axios.get("api/users/currentuser");
   return (
     <>
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Ticketify!</title>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        />
-      </head>
-
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Ticketify!</title>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      />
+      {/* <link rel="stylesheet" href="../public/index.css" /> */}
       <div>
         <div className="main">
           <section className="hero is-black is-fullheight">
@@ -60,13 +59,14 @@ const Home = ({ currentUser }) => {
               </nav>
             </div>
 
-            <div className="hero-body">
+            {/* Insert HERO HEADER HERE */}
+
+            <div className="hero-body bg-img is-fluid">
               <div className="container has-text-centered">
-                <p className="title">PURCHASE YOUR TICKETS NOW</p>
+                <p className="title bg-text">PURCHASE YOUR TICKETS NOW</p>
                 <p className="subtitle">Subtitle</p>
               </div>
             </div>
-
             <div className="hero-foot">
               <nav className="tabs is-boxed is-fullwidth">
                 <div className="container">
@@ -99,24 +99,9 @@ const Home = ({ currentUser }) => {
     </>
   );
 };
-
-Home.getInitialProps = async ({ req }) => {
-  // console.log(req.headers);
-  if (typeof window === "undefined") {
-    // we are on the server
-    const { data } = await axios.get(
-      "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser",
-      {
-        headers: req.headers,
-      }
-    );
-    return data;
-  } else {
-    // we are on the browser
-    const { data } = await axios.get("/api/users/currentuser");
-    return data;
-  }
-  return {};
+Home.getInitialProps = async (context) => {
+  const { data } = await buildClient(context).get("/api/users/currentuser");
+  return data;
 };
 
 export default Home;
