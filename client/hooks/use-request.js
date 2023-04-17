@@ -12,9 +12,9 @@ const useRequest = ({ url, method, body, onSuccess }) => {
       if (onSuccess) {
         onSuccess(response.data);
       }
-
       return response.data;
     } catch (err) {
+      console.log("there is an error here", err);
       setErrors(
         <div className="help is-danger">
           {/* <h4>Oops..</h4> */}

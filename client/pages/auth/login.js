@@ -69,7 +69,7 @@ const Login = () => {
             <div className="control">
               <button className="button is-dark">Login</button>
             </div>
-            <div className="control">
+            <div className="">
               <a href="/">
                 <button className="button  is-light">Cancel</button>
               </a>
@@ -81,4 +81,4 @@ const Login = () => {
   );
 };
 
-export default SignUp;
+export default Login;

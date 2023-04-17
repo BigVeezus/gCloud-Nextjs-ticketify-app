@@ -1,7 +1,7 @@
 import buildClient from "../api/build-client";
 
 const Home = ({ currentUser }) => {
-  console.log(currentUser);
+  // console.log(currentUser);
   // axios.get("api/users/currentuser");
   return (
     <>
@@ -11,45 +11,7 @@ const Home = ({ currentUser }) => {
       <div>
         <div className="main">
           <section className="hero is-black is-fullheight">
-            <div className="hero-head ">
-              <nav className="navbar">
-                <div className="container">
-                  <div className="navbar-brand">
-                    <a className="navbar-item" href="/">
-                      <img
-                        src="https://bulma.io/images/bulma-type-white.png"
-                        alt="Logo"
-                      />
-                    </a>
-                    <span
-                      className="navbar-burger"
-                      data-target="navbarMenuHeroB"
-                    >
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </span>
-                  </div>
-                  <div id="navbarMenuHeroB" className="navbar-menu">
-                    <div className="navbar-end">
-                      <a className="navbar-item is-active" href="/">
-                        Home
-                      </a>
-                      <a className="navbar-item">Tickets</a>
-                      <a className="navbar-item">Contact Us</a>
-                      <span className="navbar-item">
-                        <a
-                          className="button is-dark is-inverted"
-                          href="/auth/signup"
-                        >
-                          <span>Sign Up</span>
-                        </a>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-            </div>
+            <div className="hero-head "></div>
 
             {/* Insert HERO HEADER HERE */}
 
@@ -67,7 +29,9 @@ const Home = ({ currentUser }) => {
                   <div>
                     <p className="subtitle">You are not logged in</p>
                     <div className="control">
-                      <button className="button is-dark">Login</button>
+                      <a href="/auth/login">
+                        <button className="button is-dark">Login</button>
+                      </a>
                     </div>
                   </div>
                 )}

@@ -2,6 +2,9 @@
   color: aqua;
 }
 
+.navbar-item :hover {
+  background-color: white;
+}
 .bg-img {
   background-image: url("https://cdn.nba.com/teams/uploads/sites/1610612755/2023/04/Playoff-Ticket-On-SaleLandingPage-Banner-2000x450-Toyota-v2.png");
   background-repeat: no-repeat;
