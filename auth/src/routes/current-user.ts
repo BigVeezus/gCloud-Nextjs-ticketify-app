@@ -1,7 +1,5 @@
 import express from "express";
-import jwt from "jsonwebtoken";
-import { requireAuth } from "../middlewares/require-auth";
-import { currentUser } from "../middlewares/is-user-loggedin";
+import { currentUser } from "@ticketifyorg/common";
 const router = express.Router();
 
 router.get("/api/users/currentuser", currentUser, (req, res) => {

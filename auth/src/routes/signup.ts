@@ -1,11 +1,8 @@
 import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
 import jwt from "jsonwebtoken";
-import { RequestValidationError } from "../errors/request-validation";
-import { DatabaseConnectionError } from "../errors/database-connection-error";
 import { User } from "../models/user";
-import { BadRequestError } from "../errors/bad-request-error";
-import { validateRequest } from "../middlewares/validate-request";
+import { BadRequestError, validateRequest } from "@ticketifyorg/common";
 
 const router = express.Router();
 

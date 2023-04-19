@@ -2,9 +2,8 @@ import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user";
-import { RequestValidationError } from "../errors/request-validation";
-import { validateRequest } from "../middlewares/validate-request";
-import { BadRequestError } from "../errors/bad-request-error";
+import { validateRequest } from "@ticketifyorg/common";
+import { BadRequestError } from "@ticketifyorg/common";
 import { Password } from "../services/password";
 
 const router = express.Router();
