@@ -11,7 +11,6 @@ declare global {
 let mongo: any;
 beforeAll(async () => {
   process.env.JWT_KEY = "asdfasdf";
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
   mongo = await MongoMemoryServer.create();
   const mongoUri = mongo.getUri();
 
@@ -36,7 +35,7 @@ afterAll(async () => {
 global.signin = () => {
   // Build a JWT payload.  { id, email }
   const payload = {
-    id: "1lk24j124l",
+    id: new mongoose.Types.ObjectId().toHexString(),
     email: "test@test.com",
   };
 
@@ -53,5 +52,6 @@ global.signin = () => {
   const base64 = Buffer.from(sessionJSON).toString("base64");
 
   // return a string thats the cookie with the encoded data
-  return [`session=${base64}`];
+  const key = [`session=${base64}`];
+  return key;
 };

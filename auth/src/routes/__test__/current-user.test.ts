@@ -17,10 +17,7 @@ it("responds with null if unauthenticated", async () => {
   const response = await request(app)
     .get("/api/users/currentuser")
     .send()
-    .expect(400)
-    .expect({
-      errors: [{ message: "Not authorized" }],
-    });
+    .expect(200);
 
-  expect(response.body.currentUser).toBeUndefined();
+  expect(response.body.currentUser).toEqual(null);
 });
