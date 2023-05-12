@@ -32,6 +32,8 @@
     "jest": "^29.5.0",
     "jsonwebtoken": "^9.0.0",
     "mongodb-memory-server": "^8.12.2",
+    "nats-pkg": "^1.0.1",
+    "node-nats-streaming": "^0.3.2",
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.0",
     "ts-node-dev": "^2.0.0",

@@ -1,5 +1,5 @@
 const Header = ({ currentUser }) => {
-  console.log(currentUser);
+  // console.log(currentUser);
   return (
     <nav className="navbar is-black">
       <div className="container">

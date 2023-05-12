@@ -1,8 +1,7 @@
-import express from "express";
 import "express-async-errors";
-import { json } from "body-parser";
 import mongoose, { ConnectOptions } from "mongoose";
 import { app } from "./app";
+import { natsWrapper } from "./nats-wrapper";
 
 const start = async () => {
   if (!process.env.JWT_KEY) {
@@ -12,6 +11,8 @@ const start = async () => {
     throw new Error("MONGO_URI must be defined");
   }
   try {
+    await natsWrapper.connect("ticketify", "laskjk", "http://nats-srv:4222");
+
     await mongoose.connect(process.env.MONGO_URI);
     console.log("TICKETS db connected to DB");
   } catch (err) {
